@@ -12,14 +12,31 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.example.mymobapp.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        android:id="@+id/nav_general"
+        android:name="com.example.mymobapp.ui.general.GeneralFragment"
+        android:label="@string/menu_general"
+        tools:layout="@layout/fragment_general" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.example.mymobapp.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_sights"
+        android:name="com.example.mymobapp.ui.sights.SightsFragment"
+        android:label="@string/menu_sights"
+        tools:layout="@layout/fragment_sights" />
+
+    <fragment
+        android:id="@+id/nav_city"
+        android:name="com.example.mymobapp.ui.city.CityFragment"
+        android:label="@string/menu_city"
+        tools:layout="@layout/fragment_sights" />
+    <fragment
+        android:id="@+id/nav_news"
+        android:name="com.example.mymobapp.ui.news.NewsFragment"
+        android:label="@string/menu_news"
+        tools:layout="@layout/fragment_news" />
+
+    <fragment
+        android:id="@+id/nav_settings"
+        android:name="com.example.mymobapp.ui.settings.SettingsFragment"
+        android:label="@string/menu_setings"
+        tools:layout="@layout/fragment_settings" />
 </navigation>

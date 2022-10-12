@@ -1,4 +1,4 @@
-package com.example.mymobapp.ui.slideshow;
+package com.example.mymobapp.ui.general;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,22 +10,23 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.mymobapp.databinding.FragmentSlideshowBinding;
 
-public class SlideshowFragment extends Fragment {
+import com.example.mymobapp.databinding.FragmentGeneralBinding;
 
-    private FragmentSlideshowBinding binding;
+public class GeneralFragment extends Fragment {
+
+    private FragmentGeneralBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        SlideshowViewModel slideshowViewModel =
-                new ViewModelProvider(this).get(SlideshowViewModel.class);
+        GeneralViewModel generalViewModel =
+                new ViewModelProvider(this).get(GeneralViewModel.class);
 
-        binding = FragmentSlideshowBinding.inflate(inflater, container, false);
+        binding = FragmentGeneralBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textSlideshow;
-        slideshowViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        final TextView textView = binding.textGallery;
+        generalViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
 

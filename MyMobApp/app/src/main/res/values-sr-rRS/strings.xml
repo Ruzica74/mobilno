@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_home" translatable="false">Početna</string>
+    <string name="menu_city">Gradovi</string>
+    <string name="menu_news">Novosti</string>
+    <string name="menu_general">Uopšteno</string>
+    <string name="menu_setings">Podešavanja</string>
+    <string name="menu_sights">Znamenitosti</string>
+</resources>
