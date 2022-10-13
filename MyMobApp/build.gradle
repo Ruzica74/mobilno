@@ -5,6 +5,3 @@ plugins {
     id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin' version '2.0.1' apply false
 }
 
-dependencies {
-    implementation 'com.google.android.gms:play-services-cronet:18.0.1'
-}
