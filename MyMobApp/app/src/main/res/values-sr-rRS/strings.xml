@@ -6,4 +6,11 @@
     <string name="menu_general">Uopšteno</string>
     <string name="menu_setings">Podešavanja</string>
     <string name="menu_sights">Znamenitosti</string>
+    <string name="language">Izaberite jezik</string>
+    <string name="cache">Obriši keš aplikacije</string>
+    <string name="pictures">Izaberi broj slika gradova</string>
+    <string name="lan">Engleski/Srpski</string>
+    <string name="sl1">Jedna slika</string>
+    <string name="sl2">Dvije slike</string>
+    <string name="sl3">Tri slike</string>
 </resources>

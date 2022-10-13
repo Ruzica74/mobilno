@@ -15,4 +15,11 @@
     <string name="menu_news">News</string>
     <string name="menu_sights">Sights</string>
     <string name="menu_setings">Settings</string>
+    <string name="language">Choose a language</string>
+    <string name="cache">Delete applications cache</string>
+    <string name="pictures">Choose a number of city pictures</string>
+    <string name="lan">English/Serbian</string>
+    <string name="sl1">One picture</string>
+    <string name="sl2">Two pictures</string>
+    <string name="sl3">Tree pictures</string>
 </resources>
