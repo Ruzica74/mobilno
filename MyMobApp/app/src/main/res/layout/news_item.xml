@@ -37,6 +37,7 @@
                 android:layout_height="@dimen/news_item_img_height2"/>
 
             <TextView
+                android:id="@+id/author"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:drawablePadding="10dp"
@@ -45,8 +46,13 @@
                 android:textColor="@android:color/white"
                 android:singleLine="true"
                 android:text="Author"
-                android:gravity="bottom" />
-                <!-- android:layout_alignLeft="@+id/title" -->
+                android:gravity="bottom"
+                android:layout_alignLeft="@+id/title"
+                android:layout_alignStart="@id/title"
+                android:layout_alignRight="@id/layoutDate"
+                android:layout_alignTop="@id/layoutDate"
+                android:layout_alignEnd="@id/layoutDate"
+                />
 
 
             <FrameLayout
@@ -56,13 +62,86 @@
                 android:layout_below="@id/img"
                 android:textStyle="bold"
                 android:textColor="@color/colorTextTitle"
-                android:layout_marginLeft="@dimen/fab_margin"
-                android:layout_marginRight="@dimen/fab_margin"
-
-
+                android:padding="5dp"
+                android:background="@drawable/round_white"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="@dimen/news_item_date_frame_martop"
+                android:layout_marginRight="@dimen/news_item_date_frame_margright"
                 >
 
+                <ImageView
+                    android:src="@drawable/ic_date"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"/>
+
+                <TextView
+                    android:textColor="@color/colorTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="27dp"
+                    android:text="01 January 2022"
+                    android:id="@+id/publishedAt" />
+
+
             </FrameLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="@color/colorTextTitle"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:text="Title"
+                android:textSize="17sp"
+                android:layout_marginTop="10dp"
+                android:layout_below="@id/img"
+                android:id="@+id/title" />
+            
+            <TextView
+                android:id="@+id/desc"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_below="@+id/title"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:text="Desc"
+                />
+
+            <TextView
+                android:id="@+id/source"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_below="@+id/desc"
+                android:maxLines="1"
+                android:textStyle="bold"
+                android:textColor="@color/colorTextTitle"
+                android:drawablePadding="10dp"
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginBottom="10dp"
+                android:text="Source"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:drawablePadding="10dp"
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:layout_below="@+id/desc"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_toRightOf="@id/source"
+                />
+
+
 
 
 

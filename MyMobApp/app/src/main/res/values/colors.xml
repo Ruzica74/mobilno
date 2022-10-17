@@ -20,6 +20,6 @@
     <color name="colorTextTitle">#262626</color>
     <color name="colorBackground">#f9f9fa</color>
     <color name="colorTextSubtitle">#4e4e4e</color>
-
+    <color name="colorTextView">#606060</color>
 
 </resources>
