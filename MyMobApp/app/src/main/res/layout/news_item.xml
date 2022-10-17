@@ -129,6 +129,7 @@
                 android:text="Source"/>
 
             <TextView
+                android:id="@+id/time"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
                 android:drawablePadding="10dp"
