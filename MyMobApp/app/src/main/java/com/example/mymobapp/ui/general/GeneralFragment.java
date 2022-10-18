@@ -25,8 +25,8 @@ public class GeneralFragment extends Fragment {
         binding = FragmentGeneralBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textGallery;
-        generalViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        //final TextView textView = binding.textGallery;
+        //generalViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
 

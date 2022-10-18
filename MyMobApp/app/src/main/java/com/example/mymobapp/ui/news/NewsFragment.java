@@ -2,6 +2,7 @@ package com.example.mymobapp.ui.news;
 
 import androidx.lifecycle.ViewModelProvider;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -47,13 +48,14 @@ public class NewsFragment extends Fragment {
     private Adapter adapter;
     private String TAG = NewsFragment.class.getSimpleName();
     private Context thisContext;
+    private View v;
 
-    //TextView txtString;
 
     public static NewsFragment newInstance() {
         return new NewsFragment();
     }
 
+    @SuppressLint("StaticFieldLeak")
     public class OkHttpHandler extends AsyncTask<String, Void, String> {
 
         OkHttpClient client = new OkHttpClient();
@@ -81,25 +83,24 @@ public class NewsFragment extends Fragment {
             Gson gson = new Gson();
             News news = gson.fromJson(s, News.class);
             articles = news.getArticles();
-            onConnected();
             adapter.setArticles(articles);
             adapter.notifyDataSetChanged();
 
         }
     }
 
-    public void onConnected(){
-
-
-    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
+        assert container != null;
         this.thisContext = container.getContext();
-        OkHttpHandler okHttpHandler = new OkHttpHandler();
-        okHttpHandler.execute(URL+api_key);
+
         return inflater.inflate(R.layout.fragment_news, container, false);
+    }
+
+    void onClick(View v){
+
     }
 
 
@@ -114,6 +115,8 @@ public class NewsFragment extends Fragment {
         recyclerView.setNestedScrollingEnabled(false);
         adapter = new Adapter(articles, thisContext);
         recyclerView.setAdapter(adapter);
+        OkHttpHandler okHttpHandler = new OkHttpHandler();
+        okHttpHandler.execute(URL+api_key);
 
         // TODO: Use the ViewModel
     }

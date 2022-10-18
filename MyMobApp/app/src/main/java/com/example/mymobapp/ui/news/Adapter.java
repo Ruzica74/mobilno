@@ -1,7 +1,14 @@
 package com.example.mymobapp.ui.news;
 
+
+
+
+import static androidx.core.content.ContextCompat.startActivity;
+
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +31,7 @@ import com.example.mymobapp.R;
 import com.example.mymobapp.model.Article;
 
 import com.bumptech.glide.request.RequestOptions;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -53,25 +61,43 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
     public void onBindViewHolder(@NonNull MyViewHolder holders, int position) {
         final MyViewHolder holder=holders;
         Article model = articles.get(position);
-        System.out.println("position:   "+position);
+        //System.out.println("position:   "+position+ "  model: "+model.getTitle());
         RequestOptions requestOptions = new RequestOptions();
         requestOptions.placeholder(Utils.getRandomDrawbleColor());
         requestOptions.error(Utils.getRandomDrawbleColor());
         requestOptions.diskCacheStrategy(DiskCacheStrategy.ALL);
         requestOptions.centerCrop();
 
-        Glide.with(context).load(model.getUrlToImage()).into(holder.image);
+        //Glide.with(context).load(model.getUrlToImage()).into(holder.image);
 
-        holder.title.setText(model.getTitle());
-        holder.desc.setText(model.getDescription());
-        holder.published_at.setText(Utils.DateFormat(model.getPublishedAt()));
-        holder.author.setText(model.getAuthor());
-        holder.source.setText(model.getSource().getName());
-        holder.time.setText("\u2022"+Utils.DateToTimeFormat(model.getPublishedAt()));
-
-
-
-
+        if(model.getUrlToImage()!=null) {
+            Picasso.get().load(model.getUrlToImage()).into(holder.image);
+        }else{
+            holder.image.setImageResource(R.drawable.ic_image);
+        }
+        if(model.getTitle()!=null) {
+            holder.title.setText(model.getTitle());
+            holder.title.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(model.getUrl()));
+                    context.startActivity(browserIntent);
+                }
+            });
+        }
+        if(model.getDescription()!=null) {
+            holder.desc.setText(model.getDescription());
+        }
+        if(model.getPublishedAt()!=null) {
+            holder.published_at.setText(Utils.DateFormat(model.getPublishedAt()));
+            holder.time.setText("\u2022"+Utils.DateToTimeFormat(model.getPublishedAt()));
+        }
+        if(model.getAuthor()!=null) {
+            holder.author.setText(model.getAuthor());
+        }
+        if(model.getSource()!=null) {
+            holder.source.setText(model.getSource().getName());
+        }
     }
 
     @Override
@@ -108,6 +134,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
 
             this.onItemClickListener = onItemClickListener;
         }
+
 
         @Override
         public void onClick(View view) {
