@@ -82,6 +82,13 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/map2" />
 
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/gen_img1" />
+
             <View
                 android:id="@+id/divider6"
                 android:layout_width="match_parent"
@@ -104,7 +111,14 @@
                 android:id="@+id/imageView6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:src="@drawable/celt" />
+                android:src="@drawable/staro" />
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/gen_img2" />
 
             <View
                 android:id="@+id/divider10"
@@ -130,6 +144,13 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/museum" />
 
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/gen_img3" />
+
             <View
                 android:id="@+id/divider8"
                 android:layout_width="match_parent"
@@ -154,6 +175,13 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/dblmapp" />
 
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/gen_img4" />
+
             <View
                 android:id="@+id/divider12"
                 android:layout_width="match_parent"
@@ -165,6 +193,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:src="@drawable/dablin" />
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/gen_img5" />
 
             <View
                 android:id="@+id/divider13"

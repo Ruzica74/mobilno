@@ -1,5 +1,7 @@
 package com.example.mymobapp;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
@@ -18,6 +20,7 @@ import com.example.mymobapp.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static final String PREFS_NAME = "MyApp_Settings";
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
 
@@ -47,6 +50,13 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+        SharedPreferences settings = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+
+        // Writing data to SharedPreferences
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putString("language", "en");
+        editor.putInt("broj_slika", 3);
+        editor.apply();
     }
 
     @Override
@@ -61,5 +71,11 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+
+    @Override
+    protected void attachBaseContext(Context base){
+
     }
 }
