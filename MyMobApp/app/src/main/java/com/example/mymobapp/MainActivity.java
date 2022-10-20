@@ -2,7 +2,9 @@ package com.example.mymobapp;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.view.Menu;
 
@@ -18,11 +20,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.mymobapp.databinding.ActivityMainBinding;
 
+import java.util.Locale;
+
 public class MainActivity extends AppCompatActivity {
 
-    public static final String PREFS_NAME = "MyApp_Settings";
+    public static final String SELECTED_LANGUAGE = "Locale.Helper.Selected.Language";
+    private static final String PREF= "MyStorage";
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
+    public static String LANGUAGE;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,13 +56,6 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
-        SharedPreferences settings = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
-
-        // Writing data to SharedPreferences
-        SharedPreferences.Editor editor = settings.edit();
-        editor.putString("language", "en");
-        editor.putInt("broj_slika", 3);
-        editor.apply();
     }
 
     @Override
@@ -74,8 +73,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+
+
     @Override
     protected void attachBaseContext(Context base){
-
+        SharedPreferences shPreferences = PreferenceManager.getDefaultSharedPreferences(base);
+        String lang = shPreferences.getString(SELECTED_LANGUAGE, Locale.getDefault().getLanguage());
+        LANGUAGE = lang;
+        // sacuvamo promjene u konfiguraciji aplikacije
+        Locale locale = new Locale(lang);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        base.getResources().updateConfiguration(config,
+                base.getResources().getDisplayMetrics());
+        super.attachBaseContext(base);
     }
 }

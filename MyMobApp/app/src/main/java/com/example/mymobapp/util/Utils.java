@@ -1,4 +1,4 @@
-package com.example.mymobapp.ui.news;
+package com.example.mymobapp.util;
 
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
