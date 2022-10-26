@@ -12,9 +12,12 @@ import java.util.List;
 @Dao
 public interface DaoSight {
 
-    @Query("SELECT * FROM "+Constants.TABLE_NAME1)
+    @Query("SELECT * FROM "+Constants.TABLE_NAME_SIGHT)
     List<Sight> getSights();
 
     @Insert
     long insertSight(Sight sight);
+
+    @Query("DELETE FROM "+ Constants.TABLE_NAME_SIGHT)
+    void deleteAll();
 }

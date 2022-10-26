@@ -15,11 +15,14 @@ import java.util.List;
 @Dao
 public interface DaoCity {
 
-    @Query("SELECT * FROM "+Constants.TABLE_NAME)
+    @Query("SELECT * FROM "+Constants.TABLE_NAME_CITY)
     List<City> getCities();
 
     @Insert
     long insertCity(City city);
+
+    @Query("DELETE FROM "+ Constants.TABLE_NAME_CITY)
+    void deleteAll();
 
 
 }
