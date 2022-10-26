@@ -8,7 +8,7 @@ import com.example.mymobapp.database.Constants;
 import java.io.Serializable;
 
 
-@Entity(tableName = Constants.TABLE_NAME1)
+@Entity(tableName = Constants.TABLE_NAME_SIGHT)
 public class Sight implements Serializable {
 
     @PrimaryKey(autoGenerate = true)

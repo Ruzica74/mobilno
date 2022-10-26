@@ -7,12 +7,13 @@ import com.example.mymobapp.database.Constants;
 
 import java.io.Serializable;
 
-@Entity(tableName = Constants.TABLE_NAME)
+@Entity(tableName = Constants.TABLE_NAME_CITY)
 public class City implements Serializable {
 
     @PrimaryKey(autoGenerate = true)
     int id;
     String name;
+    String nameEn;
     String textEn;
     String textSr;
     String picture1;
@@ -22,9 +23,9 @@ public class City implements Serializable {
     String geoDuz;
     String geoSir;
 
-    public City(int id, String name, String textEn, String textSr, String picture1, String picture2, String picture3, String video, String geoDuz, String geoSir) {
-        this.id = id;
+    public City(String name, String nameEn, String textEn, String textSr, String picture1, String picture2, String picture3, String video, String geoDuz, String geoSir) {
         this.name = name;
+        this.nameEn = nameEn;
         this.textEn = textEn;
         this.textSr = textSr;
         this.picture1 = picture1;
@@ -33,6 +34,14 @@ public class City implements Serializable {
         this.video = video;
         this.geoDuz = geoDuz;
         this.geoSir = geoSir;
+    }
+
+    public String getNameEn() {
+        return nameEn;
+    }
+
+    public void setNameEn(String nameEn) {
+        this.nameEn = nameEn;
     }
 
     public int getId() {
