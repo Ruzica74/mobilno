@@ -124,5 +124,20 @@ public class City implements Serializable {
         this.geoSir = geoSir;
     }
 
-
+    @Override
+    public String toString() {
+        return "City{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", nameEn='" + nameEn + '\'' +
+                ", textEn='" + textEn + '\'' +
+                ", textSr='" + textSr + '\'' +
+                ", picture1='" + picture1 + '\'' +
+                ", picture2='" + picture2 + '\'' +
+                ", picture3='" + picture3 + '\'' +
+                ", video='" + video + '\'' +
+                ", geoDuz='" + geoDuz + '\'' +
+                ", geoSir='" + geoSir + '\'' +
+                '}';
+    }
 }
