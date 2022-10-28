@@ -24,10 +24,6 @@ public class RepositoryCity {
     }
 
     public List<City> getAll(){
-        List<City> c = null;
-        MyAppDatabase.databaseWriteExecutor.execute((c)->{
-            c=daoCity.getCities();
-        });
-        return c;
+            return daoCity.getCities();
     }
 }

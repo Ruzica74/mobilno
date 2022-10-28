@@ -2,6 +2,7 @@ package com.example.mymobapp.ui.settings;
 
 
 
+import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Context;
@@ -53,6 +54,9 @@ public class SettingsFragment extends Fragment {
     private class Task extends AsyncTask<String, Void, String>{
 
         private WeakReference<SettingsFragment> activityReference;
+        Task(SettingsFragment context){
+            activityReference = new WeakReference<>(context);
+        }
 
         @Override
         protected String doInBackground(String... strings) {
@@ -106,11 +110,12 @@ public class SettingsFragment extends Fragment {
             mySwitch.setChecked(true);
         }
         System.out.println("on act created i lang: "+lang);
+        SettingsFragment s= this;
         mySwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 // do something, the isChecked will be
                 // true if the switch is in the On position
-                Task task=new Task();
+                Task task=new Task(s);
                 task.execute();
 
             }
