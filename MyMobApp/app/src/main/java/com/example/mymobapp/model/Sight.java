@@ -14,6 +14,7 @@ public class Sight implements Serializable {
     @PrimaryKey(autoGenerate = true)
     int id;
     String name;
+    String nameEn;
     String textEn;
     String textSr;
     Boolean favourit;
@@ -21,10 +22,11 @@ public class Sight implements Serializable {
     String geoSir;
     String picture1;
     String picture2;
+    String picture3;
 
-    public Sight(int id, String name, String textEn, String textSr, Boolean favourit, String geoDuz, String geoSir, String picture1, String picture2) {
-        this.id = id;
+    public Sight(String name, String nameEn,String textEn, String textSr, Boolean favourit, String geoDuz, String geoSir, String picture1, String picture2, String picture3) {
         this.name = name;
+        this.nameEn = nameEn;
         this.textEn = textEn;
         this.textSr = textSr;
         this.favourit = favourit;
@@ -32,6 +34,23 @@ public class Sight implements Serializable {
         this.geoSir = geoSir;
         this.picture1 = picture1;
         this.picture2 = picture2;
+        this.picture3 = picture3;
+    }
+
+    public String getPicture3() {
+        return picture3;
+    }
+
+    public void setPicture3(String picture3) {
+        this.picture3 = picture3;
+    }
+
+    public String getNameEn() {
+        return nameEn;
+    }
+
+    public void setNameEn(String nameEn) {
+        this.nameEn = nameEn;
     }
 
     public int getId() {
