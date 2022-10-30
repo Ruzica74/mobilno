@@ -1,6 +1,7 @@
 package com.example.mymobapp.database;
 
 import android.app.Application;
+import android.os.AsyncTask;
 
 import com.example.mymobapp.model.City;
 import com.example.mymobapp.model.Sight;
@@ -26,4 +27,6 @@ public class RepositoryCity {
     public List<City> getAll(){
             return daoCity.getCities();
     }
+
+
 }

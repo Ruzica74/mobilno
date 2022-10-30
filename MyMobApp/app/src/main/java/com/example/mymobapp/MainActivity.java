@@ -3,6 +3,7 @@ package com.example.mymobapp;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
@@ -58,7 +59,35 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
         RepositoryCity r = new RepositoryCity(this.getApplication());
-        System.out.println(r.getAll());
+        //new GetTask(r).execute();
+    }
+
+    private static class GetTask extends AsyncTask<Void, Void, Boolean> {
+
+        //private WeakReference<AddNoteActivity> activityReference;
+        //private Note note;
+        private RepositoryCity repositoryCity;
+
+        // only retain a weak reference to the activity
+        GetTask(RepositoryCity r) {
+            super();
+            repositoryCity=r;
+        }
+
+        // doInBackground methods runs on a worker thread
+        @Override
+        protected Boolean doInBackground(Void... objs) {
+            System.out.println("gradovi: "+repositoryCity.getAll().get(4));
+            return false;
+        }
+
+        @Override
+        protected void onPostExecute(Boolean bool) {
+            if (bool) {
+                //DaoCity daoc= myAppDatabase.getDaoCity();
+                //System.out.println("gradovi: "+daoc.getCities());
+            }
+        }
     }
 
     @Override

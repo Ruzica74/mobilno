@@ -7,8 +7,8 @@
     tools:context=".ui.home.HomeFragment">
 
     <androidx.core.widget.NestedScrollView
-        android:layout_width="414dp"
-        android:layout_height="725dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:fillViewport="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -22,6 +22,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:scrollbars="vertical">
+
 
             <TextView
                 android:id="@+id/text_home"
@@ -39,7 +40,7 @@
                 android:id="@+id/imageView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="92dp"
+                android:layout_marginTop="@dimen/divider"
                 android:clickable="true"
                 android:contentDescription="@string/menu_news"
                 android:cropToPadding="false"
