@@ -19,7 +19,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 
-@Database(entities = {City.class, Sight.class}, version=1, exportSchema = false)
+@Database(entities = {City.class, Sight.class}, version=2, exportSchema = false)
 public abstract class MyAppDatabase extends RoomDatabase {
 
 

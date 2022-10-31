@@ -23,4 +23,10 @@
     <dimen name="title_size">17sp</dimen>
     <dimen name="title_margin_top">10dp</dimen>
     <dimen name="desc_height">20dp</dimen>
+    <dimen name="city_height">50dp</dimen>
+    <dimen name="city_margTop">3dp</dimen>
+    <dimen name="city_h">0dp</dimen>
+    <dimen name="margin_item_name">10dp</dimen>
+    <dimen name="star_margin_top">-40dp</dimen>
+    <dimen name="star_margin_right">23dp</dimen>
 </resources>

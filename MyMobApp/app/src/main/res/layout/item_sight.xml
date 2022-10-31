@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/news_item_margin_top"
         android:layout_marginBottom="@dimen/news_item_margin_top"
@@ -37,7 +37,7 @@
                 android:layout_height="@dimen/city_height"/>
 
             <TextView
-                android:id="@+id/city_name"
+                android:id="@+id/sight"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/author_height"
                 android:drawablePadding="@dimen/author_padding"
@@ -47,10 +47,11 @@
                 android:singleLine="true"
                 android:layout_marginLeft="@dimen/margin_item_name"
                 android:textSize="@dimen/title_size"
-                android:text="City"
+                android:text="Sight"
                 android:gravity="bottom"
-                android:layout_alignLeft="@+id/name1"
-                android:layout_alignStart="@id/name1"
+                android:layout_alignLeft="@+id/title"
+                android:layout_alignStart="@id/title"
+                android:layout_alignRight="@id/layoutDate"
                 android:layout_alignTop="@id/layoutDate"
                 android:layout_alignEnd="@id/layoutDate"
                 />
@@ -62,17 +63,32 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/img"
                 android:layout_alignParentRight="true"
-                android:layout_marginTop="@dimen/news_item_date_frame_martop"
-                android:layout_marginRight="@dimen/news_item_date_frame_margright"
-                />
+                android:layout_marginTop="@dimen/star_margin_top"
+                android:layout_marginRight="@dimen/star_margin_right"
+                android:background="@drawable/round_white"
+                android:padding="@dimen/lay_date_padd"
+                android:textColor="@color/colorTextTitle"
+                android:textStyle="bold">
 
+                <ImageView
+                    android:id="@+id/star"
+                    android:layout_width="@dimen/date_w_h"
+                    android:layout_height="@dimen/date_w_h"
+                    android:layout_marginLeft="@dimen/author_padding"
+                    android:layout_marginRight="@dimen/author_padding"
+                    android:contentDescription="TODO"
+                    android:src="@drawable/ic_star_orange" />
+
+
+            </FrameLayout>
 
             <TextView
-                android:id="@+id/name1"
-                android:layout_width="match_parent"
                 android:layout_height="@dimen/city_h"
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/city_margTop"
                 android:layout_below="@id/img"
-                android:layout_marginTop="@dimen/city_margTop" />
+                android:id="@+id/title"
+                />
 
 
         </RelativeLayout>

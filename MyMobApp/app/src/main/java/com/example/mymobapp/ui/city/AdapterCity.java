@@ -2,7 +2,11 @@ package com.example.mymobapp.ui.city;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.net.Uri;
+import android.os.AsyncTask;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,14 +18,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.mymobapp.MainActivity;
 import com.example.mymobapp.R;
 import com.example.mymobapp.model.Article;
 import com.example.mymobapp.model.City;
 import com.example.mymobapp.ui.news.Adapter;
+import com.example.mymobapp.ui.settings.SettingsFragment;
 import com.example.mymobapp.util.Utils;
 import com.squareup.picasso.Picasso;
 
+import java.lang.ref.WeakReference;
 import java.util.List;
+import java.util.Locale;
 
 public class AdapterCity extends RecyclerView.Adapter<AdapterCity.MyViewHolder>{
 
@@ -41,6 +49,8 @@ public class AdapterCity extends RecyclerView.Adapter<AdapterCity.MyViewHolder>{
         return new MyViewHolder(view, onItemClickListener);
     }
 
+
+
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holders,int position) {
         final MyViewHolder holder=holders;
@@ -52,50 +62,50 @@ public class AdapterCity extends RecyclerView.Adapter<AdapterCity.MyViewHolder>{
         requestOptions.diskCacheStrategy(DiskCacheStrategy.ALL);
         requestOptions.centerCrop();
 
-        if(model.getName()!=null) {
-            Picasso.get().load(model.getName()).into(holder.image);
+        //SharedPreferences shPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        //String lang = shPreferences.getString(MainActivity.SELECTED_LANGUAGE, Locale.getDefault().getLanguage());
+
+        String lanf=Locale.getDefault().getLanguage();
+        //System.out.println("jeziik: "+lanf+" model: "+model);
+
+        if(lanf.equals("en")) {
+            holder.name.setText(model.getNameEn());
+            System.out.println("uslo en");
         }else{
-            holder.image.setImageResource(R.drawable.ic_image);
+            holder.name.setText(model.getName());
+            System.out.println("uslo sr");
         }
-        /*if(model.getTitle()!=null) {
-            holder.title.setText(model.getTitle());
-            holder.title.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(model.getUrl()));
-                    context.startActivity(browserIntent);
-                }
-            });
-        }
-        if(model.getDescription()!=null) {
-            holder.desc.setText(model.getDescription());
-        }
-        if(model.getPublishedAt()!=null) {
-            holder.published_at.setText(Utils.DateFormat(model.getPublishedAt()));
-            holder.time.setText("\u2022"+Utils.DateToTimeFormat(model.getPublishedAt()));
-        }
-        if(model.getAuthor()!=null) {
-            holder.author.setText(model.getAuthor());
-        }
-        if(model.getSource()!=null) {
-            holder.source.setText(model.getSource().getName());
-        }*/
+        holder.name.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                    //Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(model.getUrl()));
+                    //context.startActivity(browserIntent);
+            }
+        });
+
     }
 
+    public void setCities(List<City> cities) {
+        this.cities = cities;
+    }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return cities.size();
     }
 
     public interface OnItemClickListener{
         void onItemClick(View view, int position);
     }
 
+    private void setOnItemClickListener(OnItemClickListener onItemClickListener){
+        this.onItemClickListener = onItemClickListener;
+    }
+
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
-        TextView title, desc, author, published_at, source, time;
-        ImageView image;
+        TextView name;
+        //ImageView image;
         OnItemClickListener onItemClickListener;
 
 
@@ -103,13 +113,8 @@ public class AdapterCity extends RecyclerView.Adapter<AdapterCity.MyViewHolder>{
             super(itemView);
 
             itemView.setOnClickListener(this);
-            title = itemView.findViewById(R.id.title);
-            desc = itemView.findViewById(R.id.desc);
-            author = itemView.findViewById(R.id.author);
-            published_at = itemView.findViewById(R.id.publishedAt);
-            source = itemView.findViewById(R.id.source);
-            time = itemView.findViewById(R.id.time);
-            image = itemView.findViewById(R.id.img);
+            name = itemView.findViewById(R.id.city_name);
+            //image = itemView.findViewById(R.id.img);
 
             this.onItemClickListener = onItemClickListener;
         }
