@@ -3,6 +3,7 @@ package com.example.mymobapp.database;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import com.example.mymobapp.model.City;
 import com.example.mymobapp.model.Sight;
@@ -20,4 +21,8 @@ public interface DaoSight {
 
     @Query("DELETE FROM "+ Constants.TABLE_NAME_SIGHT)
     void deleteAll();
+
+    @Update
+    int updateSight(Sight s);
+
 }

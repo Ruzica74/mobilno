@@ -51,14 +51,16 @@
                 android:gravity="bottom"
                 android:layout_alignLeft="@+id/title"
                 android:layout_alignStart="@id/title"
-                android:layout_alignRight="@id/layoutDate"
-                android:layout_alignTop="@id/layoutDate"
-                android:layout_alignEnd="@id/layoutDate"
+                android:layout_alignRight="@id/layoutStar"
+                android:layout_alignTop="@id/layoutStar"
+                android:layout_alignEnd="@id/layoutStar"
+                android:clickable="true"
+                android:focusable="true"
                 />
 
 
             <FrameLayout
-                android:id="@+id/layoutDate"
+                android:id="@+id/layoutStar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/img"
@@ -68,7 +70,9 @@
                 android:background="@drawable/round_white"
                 android:padding="@dimen/lay_date_padd"
                 android:textColor="@color/colorTextTitle"
-                android:textStyle="bold">
+                android:textStyle="bold"
+                android:clickable="true"
+                android:focusable="true">
 
                 <ImageView
                     android:id="@+id/star"
@@ -77,7 +81,9 @@
                     android:layout_marginLeft="@dimen/author_padding"
                     android:layout_marginRight="@dimen/author_padding"
                     android:contentDescription="TODO"
-                    android:src="@drawable/ic_star_orange" />
+                    android:src="@drawable/ic_star_orange"
+                    android:clickable="true"
+                    android:focusable="true" />
 
 
             </FrameLayout>

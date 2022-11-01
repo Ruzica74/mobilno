@@ -19,7 +19,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 
-@Database(entities = {City.class, Sight.class}, version=2, exportSchema = false)
+@Database(entities = {City.class, Sight.class}, version=3, exportSchema = false)
 public abstract class MyAppDatabase extends RoomDatabase {
 
 
@@ -42,9 +42,11 @@ public abstract class MyAppDatabase extends RoomDatabase {
         MyAppDatabase db =Room.databaseBuilder(context,
                         MyAppDatabase.class,
                         Constants.DB_NAME)
+                .fallbackToDestructiveMigration()
                 //.addCallback(sRoomDatabaseCallback)
                 .allowMainThreadQueries().build();
         new InsertTask().execute();
+        System.out.println("build databse");
         return db;
     }
 
@@ -64,11 +66,11 @@ public abstract class MyAppDatabase extends RoomDatabase {
                 // Populate the database in the background.
                 // If you want to start with more words, just add them.
                 DaoSight daos= myAppDatabase.getDaoSight();
-                daos.deleteAll();
+                //daos.deleteAll();
                 System.out.println("db oncreate");
 
                 DaoCity daoc= myAppDatabase.getDaoCity();
-                daoc.deleteAll();
+                //daoc.deleteAll();
 
                 /*Word word = new Word("Hello");
                 dao.insert(word);
@@ -221,7 +223,7 @@ public abstract class MyAppDatabase extends RoomDatabase {
                             "Od 1204. do 1922. godine bio je sedište engleske, a kasnije britanske vlasti u Irskoj. Za to vreme služio je uglavnom kao rezidencija irskog predstavnika britanskog monarha, vicekralja Irske, i kao ceremonijalni i administrativni centar. Zamak je prvobitno razvijen kao srednjovekovna tvrđava po naređenju engleskog kralja Džona. Imao je četiri ugaone kule povezane visokim zidovima i bio je izgrađen oko velikog centralnog ograđenog prostora. Izgrađen na uzvišenju koju je nekada zauzimalo ranije vikinško naselje, stari zamak je stajao otprilike na mestu današnjeg Gornjeg dvorišta. Ostao je uglavnom netaknut sve do aprila 1684. godine, kada je veliki požar naneo ozbiljnu štetu velikom delu zgrade. Uprkos obimu požara, delovi srednjovekovnih i vikinških građevina su preživeli i posetioci ih i danas mogu istražiti.\n" +
                             "\n" +
                             "Nakon požara, kampanja obnove kasnog sedamnaestog i osamnaestog veka dovela je do toga da je zamak pretvoren iz srednjovekovnog bastiona u gruzijsku palatu. Nova zgrada je uključivala skup velikih prijemnih soba poznatih kao Državni stanovi. Ovi raskošni prostori su smestili vicekralja i bili su fokus velikih državnih prilika. Tokom prvih meseci svake godine, vicekralj, a povremeno i britanski monarh koji je bio u poseti, bio je domaćin nizu zabava u Državnim apartmanima. Poznate kao 'sezona', ove svečanosti su uključivale državne balove, bankete i kraljevske ceremonije za pripadnike aristokratije. Početkom devetnaestog veka zamak je poboljšan dodavanjem Kraljevske kapele u dvorištu Donjeg zamka. Ova veličanstvena građevina gotičkog preporoda, spolja puna vrhova i bogata ukrasnim elementima iznutra, predstavljala je mesto obožavanja vicekraljevskog domaćinstva. To je i danas jedan od arhitektonskih vrhunaca gruzijskog Dablina.\n",
-                    false, "", "", "https://seda.college/blog/wp-content/uploads/2018/05/dublin-castle-1024x768.jpg",
+                    true, "", "", "https://seda.college/blog/wp-content/uploads/2018/05/dublin-castle-1024x768.jpg",
                     "https://twotravelingtexans.com/wp-content/uploads/2018/07/castle-3274586_1920-1.jpg",
                     "https://heritageireland.ie/assets/uploads/2020/03/Dublin-Castle-throne-room.jpg");
             Sight sight3=new Sight("Dvorac Ešford", "Castle Ashford", "The castle was built in 1228. on the site of a former monastery by the Anglo-Norman House of Burke. After more than three and a half centuries, the castle passed into the hands of a new owner after a fierce struggle. In 1589, it was occupied by Sir Richard Bingham, who additionally fortified it. In 1670. or 1678, Dominic Brown, of the Brown family, received this estate by special royal grant for use. In 1715, the Brown family founded the Ashford estate here and built a hunting lodge in the style of a 17th-century French castle. The two-headed eagles that can still be seen on the roof of this castle are the coat of arms of the Brown family. At the end of the 18th century, a branch of this family lived in the castle. At the beginning of the 19th century, it was recorded that a certain Thomas Ellwood, representative of the Brown family in Ashford, lived in the castle in 1814. The estate was bought in 1852. by Sir Benjamin Guinness. He extended the building with two large wings in the Victorian style. He also expanded the estate to 26,000 hectares, built new roads and planted thousands of trees. In 1939, the castle was sold to Noel Hugard, who turned the castle into a hotel. In 1970, John Mulcahy became the new owner of the hotel. He completely renovated it, and also expanded it by adding a new wing and building a golf course in the early 1970s. A group of American investors, of Irish origin, bought the property in 1985. and then sold it in 2007 for €50 million to real estate dealer and investor Gary Barrett and his family. In September 2012, Ashford was named the best resort and hotel in Ireland, and the third best in Europe.",

@@ -53,7 +53,8 @@
                 android:layout_alignStart="@id/name1"
                 android:layout_alignTop="@id/layoutDate"
                 android:layout_alignEnd="@id/layoutDate"
-                />
+                android:clickable="true"
+                android:focusable="true" />
 
 
             <FrameLayout

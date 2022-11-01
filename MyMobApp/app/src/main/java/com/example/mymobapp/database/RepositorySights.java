@@ -11,22 +11,23 @@ public class RepositorySights {
 
     private DaoSight daoSight;
 
-    RepositorySights(Application application){
+    public RepositorySights(Application application){
         MyAppDatabase myAppDatabase = MyAppDatabase.getInstance(application);
         daoSight = myAppDatabase.getDaoSight();
     }
 
-    void insert(Sight sight){
+    public void insert(Sight sight){
         MyAppDatabase.databaseWriteExecutor.execute(()->{
             daoSight.insertSight(sight);
         });
     }
 
-    List<Sight> getAll(){
-        AtomicReference<List<Sight>> c = null;
-        MyAppDatabase.databaseWriteExecutor.execute(()->{
-            c.set(daoSight.getSights());
-        });
-        return c.get();
+    public List<Sight> getAll(){
+        return daoSight.getSights();
+    }
+
+    public boolean update(Sight sight){
+        int i= daoSight.updateSight(sight);
+        return i != 0;
     }
 }
