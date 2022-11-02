@@ -34,4 +34,8 @@
     <string name="gen_img3">Irish museum of modern art</string>
     <string name="gen_img4">Map of Dublin</string>
     <string name="gen_img5">Dublin</string>
+    <string name="title_activity_city" translatable="false">SightActivity</string>
+    <string name="title_activity_sight2" translatable="false">SightActivity2</string>
+    <!-- Strings used for fragments for navigation -->
+
 </resources>

@@ -1,6 +1,7 @@
 package com.example.mymobapp.model;
 
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import com.example.mymobapp.database.Constants;
@@ -24,7 +25,15 @@ public class Sight implements Serializable {
     String picture2;
     String picture3;
 
-    public Sight(String name, String nameEn,String textEn, String textSr, Boolean favourit, String geoDuz, String geoSir, String picture1, String picture2, String picture3) {
+
+    @Ignore
+    public Sight(){
+
+    }
+
+
+
+    public Sight(String name, String nameEn, String textEn, String textSr, Boolean favourit, String geoDuz, String geoSir, String picture1, String picture2, String picture3) {
         this.name = name;
         this.nameEn = nameEn;
         this.textEn = textEn;

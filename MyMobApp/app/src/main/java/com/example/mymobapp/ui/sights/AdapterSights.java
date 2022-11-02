@@ -1,8 +1,8 @@
 package com.example.mymobapp.ui.sights;
 
-import android.annotation.SuppressLint;
 import android.app.Application;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -20,14 +20,16 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.mymobapp.R;
 import com.example.mymobapp.database.RepositorySights;
-import com.example.mymobapp.model.City;
 import com.example.mymobapp.model.Sight;
-import com.example.mymobapp.ui.city.AdapterCity;
+import com.example.mymobapp.ui.activity.SightActivity2;
 import com.example.mymobapp.util.Utils;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
 
 public class AdapterSights extends RecyclerView.Adapter<AdapterSights.MyViewHolder>{
 
@@ -90,8 +92,16 @@ public class AdapterSights extends RecyclerView.Adapter<AdapterSights.MyViewHold
         holder.name.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(model.getUrl()));
-                //context.startActivity(browserIntent);
+                try{
+                    Intent activityIntent = new Intent(context, SightActivity2.class);
+                    ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
+                    String json = ow.writeValueAsString(model);
+                    activityIntent.putExtra("model", json);
+                    context.startActivity(activityIntent);
+                } catch (JsonProcessingException e) {
+                    e.printStackTrace();
+                }
+
             }
         });
         holder.image.setOnClickListener(new View.OnClickListener() {
