@@ -19,7 +19,7 @@
             android:name=".ui.activity.SightActivity2"
             android:exported="false"
             android:label="@string/title_activity_sight2"
-            android:theme="@style/Theme.MyMobApp.NoActionBar">
+            android:theme="@style/Theme.MyMobApp">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
