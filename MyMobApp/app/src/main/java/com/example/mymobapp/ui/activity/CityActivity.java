@@ -5,9 +5,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,14 +14,12 @@ import com.example.mymobapp.model.Sight;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.squareup.picasso.Picasso;
 
-import java.util.Locale;
-
-public class SightActivity2 extends AppCompatActivity {
+public class CityActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sight2);
+        setContentView(R.layout.activity_city);
         ActionBar actionBar = getSupportActionBar();
 
         // showing the back button in action bar
@@ -34,11 +30,11 @@ public class SightActivity2 extends AppCompatActivity {
                 String json = extras.getString("model");
                 ObjectMapper objectMapper = new ObjectMapper();
                 Sight model = objectMapper.readValue(json, Sight.class);
-                TextView naslov= (TextView) this.findViewById(R.id.sight_title);
-                TextView tekst = this.findViewById(R.id.sight_text);
-                ImageView image1 = this.findViewById(R.id.sight_image1);
-                ImageView image2 = this.findViewById(R.id.sight_image2);
-                ImageView image3 = this.findViewById(R.id.sight_image3);
+                TextView naslov= (TextView) this.findViewById(R.id.city_title);
+                TextView tekst = this.findViewById(R.id.city_text);
+                ImageView image1 = this.findViewById(R.id.city_image1);
+                ImageView image2 = this.findViewById(R.id.city_image2);
+                ImageView image3 = this.findViewById(R.id.city_image3);
 
                 String lanf= extras.getString("language");
                 System.out.println("Jezik sight activiti: "+lanf);
@@ -57,6 +53,7 @@ public class SightActivity2 extends AppCompatActivity {
             }
         }
     }
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
@@ -66,6 +63,4 @@ public class SightActivity2 extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
-
 }

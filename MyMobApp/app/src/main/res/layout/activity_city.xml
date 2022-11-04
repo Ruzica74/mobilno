@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.activity.SightActivity2">
-
+    tools:context=".ui.activity.CityActivity">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:contentDescription="@string/action_settings"
         android:fillViewport="true">
 
         <LinearLayout
@@ -20,71 +17,77 @@
             android:orientation="vertical">
 
             <View
-                android:id="@+id/divider14"
+                android:id="@+id/divider23"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/divider"
                 android:background="?android:attr/divider" />
 
             <TextView
-                android:id="@+id/sight_title"
+                android:id="@+id/city_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:text="TextView"
-                android:textColor="@color/dark_primary"
-                android:textSize="@dimen/title_size" />
-
-            <View
-                android:id="@+id/divider15"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/divider"
-                android:background="?android:attr/divider" />
-
-            <TextView
-                android:id="@+id/sight_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
                 android:text="TextView" />
 
             <View
-                android:id="@+id/divider16"
+                android:id="@+id/divider22"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/divider"
+                android:background="?android:attr/divider" />
+
+            <TextView
+                android:id="@+id/city_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView" />
+
+            <View
+                android:id="@+id/divider21"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/divider"
                 android:background="?android:attr/divider" />
 
             <ImageView
-                android:id="@+id/sight_image1"
+                android:id="@+id/city_image1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                tools:srcCompat="@tools:sample/avatars" />
 
             <View
-                android:id="@+id/divider17"
+                android:id="@+id/divider20"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/divider"
                 android:background="?android:attr/divider" />
 
             <ImageView
-                android:id="@+id/sight_image2"
+                android:id="@+id/city_image2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                tools:srcCompat="@tools:sample/avatars" />
 
             <View
-                android:id="@+id/divider18"
+                android:id="@+id/divider26"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/divider"
                 android:background="?android:attr/divider" />
 
             <ImageView
-                android:id="@+id/sight_image3"
+                android:id="@+id/city_image3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                tools:srcCompat="@tools:sample/avatars" />
 
             <View
-                android:id="@+id/divider19"
+                android:id="@+id/divider24"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/divider"
                 android:background="?android:attr/divider" />
+
+            <View
+                android:id="@+id/divider25"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/divider"
+                android:background="?android:attr/divider" />
+
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 

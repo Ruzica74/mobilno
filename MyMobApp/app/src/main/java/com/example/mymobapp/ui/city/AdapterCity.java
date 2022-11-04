@@ -22,9 +22,14 @@ import com.example.mymobapp.MainActivity;
 import com.example.mymobapp.R;
 import com.example.mymobapp.model.Article;
 import com.example.mymobapp.model.City;
+import com.example.mymobapp.ui.activity.CityActivity;
+import com.example.mymobapp.ui.activity.SightActivity2;
 import com.example.mymobapp.ui.news.Adapter;
 import com.example.mymobapp.ui.settings.SettingsFragment;
 import com.example.mymobapp.util.Utils;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
 import com.squareup.picasso.Picasso;
 
 import java.lang.ref.WeakReference;
@@ -78,8 +83,16 @@ public class AdapterCity extends RecyclerView.Adapter<AdapterCity.MyViewHolder>{
         holder.name.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                    //Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(model.getUrl()));
-                    //context.startActivity(browserIntent);
+                try{
+                    Intent activityIntent = new Intent(context, CityActivity.class);
+                    ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
+                    String json = ow.writeValueAsString(model);
+                    activityIntent.putExtra("model", json);
+                    activityIntent.putExtra("language", lanf);
+                    context.startActivity(activityIntent);
+                } catch (JsonProcessingException e) {
+                    e.printStackTrace();
+                }
             }
         });
 

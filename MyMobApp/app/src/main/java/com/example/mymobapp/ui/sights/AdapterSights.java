@@ -97,6 +97,7 @@ public class AdapterSights extends RecyclerView.Adapter<AdapterSights.MyViewHold
                     ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
                     String json = ow.writeValueAsString(model);
                     activityIntent.putExtra("model", json);
+                    activityIntent.putExtra("language", lanf);
                     context.startActivity(activityIntent);
                 } catch (JsonProcessingException e) {
                     e.printStackTrace();
