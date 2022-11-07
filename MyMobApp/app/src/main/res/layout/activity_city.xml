@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -11,10 +11,27 @@
         android:layout_height="match_parent"
         android:fillViewport="true">
 
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:id="@+id/actionbartitle"
+                android:background="@color/primary"
+                android:maxLines="1"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:paddingStart="@dimen/activity_horizontal_margin"
+                android:paddingEnd="@dimen/activity_horizontal_margin"
+                android:gravity="center_vertical"
+                android:drawablePadding="@dimen/padding_8"
+                android:drawableLeft="@drawable/ic_back"
+                android:textColor="@android:color/white"
+                android:ellipsize="end"/>
 
             <View
                 android:id="@+id/divider23"
@@ -26,6 +43,8 @@
                 android:id="@+id/city_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textSize="@dimen/title_size"
+                android:gravity="center"
                 android:text="TextView" />
 
             <View
@@ -38,6 +57,7 @@
                 android:id="@+id/city_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:text="TextView" />
 
             <View
@@ -53,7 +73,7 @@
                 tools:srcCompat="@tools:sample/avatars" />
 
             <View
-                android:id="@+id/divider20"
+                android:id="@+id/divider26"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/divider"
                 android:background="?android:attr/divider" />
@@ -65,7 +85,7 @@
                 tools:srcCompat="@tools:sample/avatars" />
 
             <View
-                android:id="@+id/divider26"
+                android:id="@+id/divider20"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/divider"
                 android:background="?android:attr/divider" />
@@ -82,6 +102,11 @@
                 android:layout_height="@dimen/divider"
                 android:background="?android:attr/divider" />
 
+            <com.google.android.youtube.player.YouTubePlayerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/player"/>
+
             <View
                 android:id="@+id/divider25"
                 android:layout_width="match_parent"
@@ -91,4 +116,4 @@
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

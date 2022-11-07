@@ -21,6 +21,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Switch;
 
 import com.example.mymobapp.MainActivity;
@@ -122,7 +124,40 @@ public class SettingsFragment extends Fragment {
             }
         });
         System.out.println("Kraj");
+        try {
+            SharedPreferences sh = getActivity().getSharedPreferences("My App", Context.MODE_PRIVATE);
+            int number = sh.getInt("picture", 2);
+            if(number==0) {
+                RadioButton rb = getView().findViewById(R.id.radioButton1);
+                rb.setChecked(true);
+            }else if(number==1){
+                RadioButton rb = getView().findViewById(R.id.radioButton2);
+                rb.setChecked(true);
+            }else if(number==2){
+                RadioButton rb = getView().findViewById(R.id.radioButton3);
+                rb.setChecked(true);
+            }
 
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        RadioGroup  group= (RadioGroup) getView().findViewById(R.id.radioGroup);
+        group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                try {
+                    View radioButton = radioGroup.findViewById(i);
+                    int index = radioGroup.indexOfChild(radioButton);
+                    System.out.println("Index radio button: " + index);
+                    SharedPreferences sh = getActivity().getSharedPreferences("My App", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor myEdit = sh.edit();
+                    myEdit.putInt("pictures", index);
+                    myEdit.apply();
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+        });
 
         // TODO: Use the ViewModel
     }

@@ -1,6 +1,7 @@
 package com.example.mymobapp.model;
 
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import com.example.mymobapp.database.Constants;
@@ -22,6 +23,11 @@ public class City implements Serializable {
     String video;
     String geoDuz;
     String geoSir;
+
+    @Ignore
+    public City(){
+
+    }
 
     public City(String name, String nameEn, String textEn, String textSr, String picture1, String picture2, String picture3, String video, String geoDuz, String geoSir) {
         this.name = name;
