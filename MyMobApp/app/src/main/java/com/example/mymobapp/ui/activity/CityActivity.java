@@ -15,7 +15,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.mymobapp.R;
-import com.example.mymobapp.databinding.ActivityMainBinding;
 import com.example.mymobapp.model.City;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.android.youtube.player.YouTubeBaseActivity;
@@ -25,7 +24,6 @@ import com.google.android.youtube.player.YouTubePlayerView;
 import com.squareup.picasso.Picasso;
 
 public class CityActivity extends YouTubeBaseActivity {
-    private ActivityMainBinding binding;
     private final String API_KEY = "AIzaSyD4VlMBBcciZqcy5JX3Mz1FXwqK8iXpHaE";
 
     @Override
@@ -82,13 +80,13 @@ public class CityActivity extends YouTubeBaseActivity {
                 };
 
                 youTubePlayerView.initialize(API_KEY, listener);
-                /*TextView actionbarTitle = findViewById(R.id.actionbartitle);
+                TextView actionbarTitle = findViewById(R.id.actionbartitle);
                 actionbarTitle.setOnClickListener(new View.OnClickListener(){
                     @Override
                     public void onClick(View v){
                         CityActivity.super.onBackPressed();
                     }
-                });*/
+                });
             }catch (Exception e){
                 e.printStackTrace();
             }
