@@ -34,7 +34,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-public class CityFragment extends Fragment {
+import com.google.android.gms.maps.CameraUpdate;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.GoogleMapOptions;
+import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.CameraPosition;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
+
+public class CityFragment extends Fragment implements OnMapReadyCallback {
 
     private CityViewModel mViewModel;
     private RecyclerView recyclerView;
@@ -42,6 +53,16 @@ public class CityFragment extends Fragment {
     private List<City> cities = new ArrayList<>();
     private AdapterCity adapter;
     private Context thisContext;
+    private SupportMapFragment mapFragment;
+
+    @Override
+    public void onMapReady(@NonNull GoogleMap googleMap) {
+        CameraPosition cameraPosition = new CameraPosition.Builder()
+                .target(new LatLng(-33, 150))
+                .zoom(13)
+                .build();
+        MapFragment.newInstance(new GoogleMapOptions()
+                .camera(camera));}
 
     private class GetTask extends AsyncTask<Void, Void, Boolean> {
 
@@ -97,7 +118,8 @@ public class CityFragment extends Fragment {
         recyclerView.setAdapter(adapter);
         RepositoryCity r = new RepositoryCity(this.getActivity().getApplication());
         new GetTask(r).execute();
-
+        SupportMapFragment mapFragment= (SupportMapFragment) this.getChildFragmentManager().findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
 
         // TODO: Use the ViewModel
     }
