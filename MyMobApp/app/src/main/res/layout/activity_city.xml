@@ -114,6 +114,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/divider"
                 android:background="?android:attr/divider" />
+            <ImageView
+                android:id="@+id/cloud"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_cloud" />
+
+            <TextView
+                android:id="@+id/prognoza"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/menu_city">
+            </TextView>
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

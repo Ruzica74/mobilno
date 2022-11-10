@@ -19,8 +19,8 @@ public class Sight implements Serializable {
     String textEn;
     String textSr;
     Boolean favourit;
-    String geoDuz;
-    String geoSir;
+    double geoDuz;
+    double geoSir;
     String picture1;
     String picture2;
     String picture3;
@@ -33,7 +33,7 @@ public class Sight implements Serializable {
 
 
 
-    public Sight(String name, String nameEn, String textEn, String textSr, Boolean favourit, String geoDuz, String geoSir, String picture1, String picture2, String picture3) {
+    public Sight(String name, String nameEn, String textEn, String textSr, Boolean favourit, Double geoDuz, Double geoSir, String picture1, String picture2, String picture3) {
         this.name = name;
         this.nameEn = nameEn;
         this.textEn = textEn;
@@ -102,19 +102,19 @@ public class Sight implements Serializable {
         this.favourit = favourit;
     }
 
-    public String getGeoDuz() {
+    public Double getGeoDuz() {
         return geoDuz;
     }
 
-    public void setGeoDuz(String geoDuz) {
+    public void setGeoDuz(Double geoDuz) {
         this.geoDuz = geoDuz;
     }
 
-    public String getGeoSir() {
+    public Double getGeoSir() {
         return geoSir;
     }
 
-    public void setGeoSir(String geoSir) {
+    public void setGeoSir(Double geoSir) {
         this.geoSir = geoSir;
     }
 

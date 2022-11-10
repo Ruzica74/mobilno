@@ -2,12 +2,14 @@ package com.example.mymobapp.ui.sights;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -23,15 +25,27 @@ import com.example.mymobapp.database.RepositorySights;
 import com.example.mymobapp.databinding.FragmentSightsBinding;
 import com.example.mymobapp.model.City;
 import com.example.mymobapp.model.Sight;
+import com.example.mymobapp.ui.activity.SightActivity2;
 import com.example.mymobapp.ui.city.AdapterCity;
 import com.example.mymobapp.ui.city.CityFragment;
 import com.example.mymobapp.ui.city.CityViewModel;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 
-public class SightsFragment extends Fragment {
+public class SightsFragment extends Fragment implements OnMapReadyCallback {
 
     //private FragmentSightsBinding binding;
     private SightsViewModel mViewModel;
@@ -40,6 +54,49 @@ public class SightsFragment extends Fragment {
     private List<Sight> sights= new ArrayList<>();
     private AdapterSights adapter;
     private Context thisContext;
+    private SupportMapFragment mapFragment;
+    private GoogleMap mMap;
+
+    @Override
+    public void onMapReady(@NonNull GoogleMap googleMap) {
+        mMap=googleMap;
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(53, -7), 6));
+
+        for (Sight sight:sights) {
+            LatLng ll = new LatLng(sight.getGeoDuz(), sight.getGeoSir());
+            mMap.addMarker(new MarkerOptions().position(ll).title(sight.getNameEn()));
+        }
+
+        googleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+                // on marker click we are getting the title of our marker
+                // which is clicked and displaying it in a toast message.
+                //String markerName = marker.getTitle();
+                //Toast.makeText(getActivity(), "Clicked location is " + markerName, Toast.LENGTH_SHORT).show();
+                try {
+                Sight model=null;
+                for(Sight sight:sights){
+                    if(sight.getNameEn().equals(marker.getTitle()))
+                        model=sight;
+                }
+
+                String lanf= Locale.getDefault().getLanguage();
+                Intent activityIntent = new Intent(thisContext, SightActivity2.class);
+                ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
+                String json = null;
+                json = ow.writeValueAsString(model);
+                activityIntent.putExtra("model", json);
+                activityIntent.putExtra("language", lanf);
+                thisContext.startActivity(activityIntent);
+                } catch (JsonProcessingException e) {
+                    e.printStackTrace();
+                }
+                return false;
+            }
+        });
+
+    }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -87,7 +144,7 @@ public class SightsFragment extends Fragment {
         protected void onPostExecute(Boolean bool) {
             sights = znamenitosti;
             adapter.setSights(sights);
-            //System.out.println("post execute");
+            mapa();
             adapter.notifyDataSetChanged();
         }
     }
@@ -105,8 +162,13 @@ public class SightsFragment extends Fragment {
         recyclerView.setAdapter(adapter);
         RepositorySights r = new RepositorySights(this.getActivity().getApplication());
         new GetTask(r).execute();
-
+        mapFragment= (SupportMapFragment) this.getChildFragmentManager().findFragmentById(R.id.map_sight);
+        mapFragment.getMapAsync(this);
 
         // TODO: Use the ViewModel
+    }
+
+    private void mapa(){
+        mapFragment.getMapAsync(this);
     }
 }

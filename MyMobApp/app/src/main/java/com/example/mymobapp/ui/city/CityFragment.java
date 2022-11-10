@@ -57,12 +57,8 @@ public class CityFragment extends Fragment implements OnMapReadyCallback {
 
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
-        CameraPosition cameraPosition = new CameraPosition.Builder()
-                .target(new LatLng(-33, 150))
-                .zoom(13)
-                .build();
-        MapFragment.newInstance(new GoogleMapOptions()
-                .camera(camera));}
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(53, -7), 6));
+    }
 
     private class GetTask extends AsyncTask<Void, Void, Boolean> {
 

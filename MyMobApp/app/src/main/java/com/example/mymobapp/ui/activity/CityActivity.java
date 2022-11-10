@@ -7,7 +7,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ActionBar;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -23,8 +25,19 @@ import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
 import com.squareup.picasso.Picasso;
 
+import java.util.Locale;
+import android.os.Bundle;
+import android.app.Activity;
+import android.content.Intent;
+import android.util.DisplayMetrics;
+import android.content.res.Resources;
+import android.content.res.Configuration;
+
+import java.util.Locale;
+
 public class CityActivity extends YouTubeBaseActivity {
     private final String API_KEY = "AIzaSyD4VlMBBcciZqcy5JX3Mz1FXwqK8iXpHaE";
+    private String language = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +57,7 @@ public class CityActivity extends YouTubeBaseActivity {
                 ImageView image3 = this.findViewById(R.id.city_image3);
 
                 String lanf= extras.getString("language");
+                language = lanf;
                 System.out.println("Jezik sight activiti: "+lanf);
                 if(lanf.equals("en")) {
                     naslov.setText(model.getNameEn());
@@ -102,4 +116,5 @@ public class CityActivity extends YouTubeBaseActivity {
         }
         return super.onOptionsItemSelected(item);
     }*/
+
 }
