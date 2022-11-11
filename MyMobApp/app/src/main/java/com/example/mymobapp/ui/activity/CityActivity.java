@@ -4,10 +4,12 @@ import androidx.annotation.NonNull;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.MenuItem;
@@ -18,11 +20,15 @@ import android.widget.Toast;
 
 import com.example.mymobapp.R;
 import com.example.mymobapp.model.City;
+import com.example.mymobapp.model.Forecast;
+import com.example.mymobapp.model.News;
+import com.example.mymobapp.ui.news.NewsFragment;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
+import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
 import java.util.Locale;
@@ -35,9 +41,48 @@ import android.content.res.Configuration;
 
 import java.util.Locale;
 
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+
 public class CityActivity extends YouTubeBaseActivity {
     private final String API_KEY = "AIzaSyD4VlMBBcciZqcy5JX3Mz1FXwqK8iXpHaE";
+    private final String WEATHER_API_KEY= "e0b8d76301849905d7facee5a832f4cd";
     private String language = "";
+    private Forecast forecast;
+
+
+    @SuppressLint("StaticFieldLeak")
+    public class OkHttpHandler extends AsyncTask<String, Void, String> {
+
+        OkHttpClient client = new OkHttpClient();
+
+        @Override
+        protected String doInBackground(String... params) {
+
+            Request.Builder builder = new Request.Builder();
+            builder.url(params[0]);
+            Request request = builder.build();
+
+            try {
+                Response response = client.newCall(request).execute();
+                return response.body().string();
+            } catch (Exception e) {
+                Toast.makeText(getApplicationContext(),"No results", Toast.LENGTH_SHORT).show();
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            Gson gson = new Gson();
+            forecast = gson.fromJson(s, Forecast.class);
+
+
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,6 +146,9 @@ public class CityActivity extends YouTubeBaseActivity {
                         CityActivity.super.onBackPressed();
                     }
                 });
+
+                OkHttpHandler okHttpHandler = new OkHttpHandler();
+                okHttpHandler.execute("https://api.openweathermap.org/data/2.5/weather?q="+model.getNameEn()+"&appid="+WEATHER_API_KEY+"&units=metric");
             }catch (Exception e){
                 e.printStackTrace();
             }

@@ -114,18 +114,146 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/divider"
                 android:background="?android:attr/divider" />
-            <ImageView
-                android:id="@+id/cloud"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_cloud" />
 
-            <TextView
-                android:id="@+id/prognoza"
-                android:layout_width="match_parent"
+
+
+                <FrameLayout
+                    android:id="@+id/layoutDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/round_white"
+                    android:padding="@dimen/lay_date_padd"
+                    android:textColor="@color/colorTextTitle"
+                    android:textStyle="bold">
+
+                    <ImageView
+                        android:layout_width="@dimen/date_w_h"
+                        android:layout_height="@dimen/date_w_h"
+                        android:layout_marginLeft="@dimen/author_padding"
+                        android:layout_marginRight="@dimen/author_padding"
+                        android:src="@drawable/ic_pin" />
+
+                    <TextView
+                        android:id="@+id/city_name_weather"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/published_margin_left"
+                        android:layout_marginRight="@dimen/published_margin_right"
+                        android:text="Dablin"
+                        android:textColor="@color/colorTextView" />
+                </FrameLayout>
+
+                <ImageView
+                    android:id="@+id/cloud"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_baseline_cloud_queue_24" />
+
+                <FrameLayout
+                    android:id="@+id/layoutTemp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:padding="@dimen/lay_date_padd"
+                    android:textColor="@color/colorTextTitle"
+                    android:textStyle="bold">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/date_w_h"
+                        android:layout_marginLeft="@dimen/author_padding"
+                        android:layout_marginRight="@dimen/author_padding"
+                        android:text="@string/temp" />
+
+                    <TextView
+                        android:id="@+id/temp_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/temp_margin"
+                        android:layout_marginRight="@dimen/published_margin_right"
+                        android:text="33 c"
+                        android:textColor="@color/colorTextView" />
+                </FrameLayout>
+            <FrameLayout
+                android:id="@+id/layoutMaxMin"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/menu_city">
-            </TextView>
+                android:layout_gravity="center"
+                android:padding="@dimen/lay_date_padd"
+                android:textColor="@color/colorTextTitle"
+                android:textStyle="bold">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/date_w_h"
+                    android:layout_marginLeft="@dimen/author_padding"
+                    android:layout_marginRight="@dimen/author_padding"
+                    android:text="@string/maxTemp_minTemp" />
+
+                <TextView
+                    android:id="@+id/maxmin_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/tempmm_margin"
+                    android:layout_marginRight="@dimen/published_margin_right"
+                    android:text="33 c"
+                    android:textColor="@color/colorTextView" />
+                </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/layoutHumidity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="@dimen/lay_date_padd"
+                android:textColor="@color/colorTextTitle"
+                android:textStyle="bold">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/date_w_h"
+                    android:layout_marginLeft="@dimen/author_padding"
+                    android:layout_marginRight="@dimen/author_padding"
+                    android:text="@string/humidity" />
+
+                <TextView
+                    android:id="@+id/humidity_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/temp_margin"
+                    android:layout_marginRight="@dimen/published_margin_right"
+                    android:text="33 c"
+                    android:textColor="@color/colorTextView" />
+            </FrameLayout>
+            <FrameLayout
+                android:id="@+id/layoutWind"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="@dimen/lay_date_padd"
+                android:textColor="@color/colorTextTitle"
+                android:textStyle="bold">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/date_w_h"
+                    android:layout_marginLeft="@dimen/author_padding"
+                    android:layout_marginRight="@dimen/author_padding"
+                    android:text="@string/wind" />
+
+                <TextView
+                    android:id="@+id/wind_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/temp_margin"
+                    android:layout_marginRight="@dimen/published_margin_right"
+                    android:text="33 c"
+                    android:textColor="@color/colorTextView" />
+            </FrameLayout>
+
+
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

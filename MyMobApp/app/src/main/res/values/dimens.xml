@@ -32,4 +32,6 @@
     <dimen name="app_bar_height">180dp</dimen>
     <dimen name="text_margin">16dp</dimen>
     <dimen name="padding_8">8dp</dimen>
+    <dimen name="temp_margin">100dp</dimen>
+    <dimen name="tempmm_margin">170dp</dimen>
 </resources>

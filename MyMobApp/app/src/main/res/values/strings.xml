@@ -36,6 +36,11 @@
     <string name="gen_img5">Dublin</string>
     <string name="title_activity_city" translatable="false">SightActivity</string>
     <string name="title_activity_sight2"></string>
+    <string name="temp">Temperature:</string>
+    <string name="maxTemp_minTemp">Max and min temperature:</string>
+    <string name="wind">Wind speed:</string>
+    <string name="humidity">Humidity:</string>
+
     <!-- Strings used for fragments for navigation -->
 
 </resources>
