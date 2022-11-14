@@ -79,8 +79,8 @@ public class CityActivity extends YouTubeBaseActivity {
             super.onPostExecute(s);
             Gson gson = new Gson();
             forecast = gson.fromJson(s, Forecast.class);
-
-
+            System.out.println("prognozaa: "+forecast.getWind().getSpeed());
+            changeForcast(forecast);
         }
     }
 
@@ -100,6 +100,7 @@ public class CityActivity extends YouTubeBaseActivity {
                 ImageView image1 = this.findViewById(R.id.city_image1);
                 ImageView image2 = this.findViewById(R.id.city_image2);
                 ImageView image3 = this.findViewById(R.id.city_image3);
+                TextView pr_grad=this.findViewById(R.id.city_name_weather);
 
                 String lanf= extras.getString("language");
                 language = lanf;
@@ -107,9 +108,11 @@ public class CityActivity extends YouTubeBaseActivity {
                 if(lanf.equals("en")) {
                     naslov.setText(model.getNameEn());
                     tekst.setText(model.getTextEn());
+                    pr_grad.setText(model.getNameEn());
                 }else{
                     naslov.setText(model.getName());
                     tekst.setText(model.getTextSr());
+                    pr_grad.setText(model.getName());
                 }
                 SharedPreferences sh = getSharedPreferences("My App", Context.MODE_PRIVATE);
                 int number = sh.getInt("pictures", 2);
@@ -164,5 +167,22 @@ public class CityActivity extends YouTubeBaseActivity {
         }
         return super.onOptionsItemSelected(item);
     }*/
+
+    void changeForcast(Forecast forecast){
+        TextView temp = this.findViewById(R.id.temp_text);
+        TextView maxmin = this.findViewById(R.id.maxmin_text);
+        TextView humidity = this.findViewById(R.id.humidity_text);
+        TextView wind = this.findViewById(R.id.wind_text);
+
+        String tmp = forecast.getMain().getTemp()+" °C";
+        temp.setText(tmp);
+        String mm = forecast.getMain().getTemp_max()+"-"+forecast.getMain().getTemp_min()+" °C";
+        maxmin.setText(mm);
+        String h = forecast.getMain().getHumidity()+"%";
+        humidity.setText(h);
+        String w = forecast.getWind().getSpeed()+" km/h";
+        wind.setText(w);
+
+    }
 
 }

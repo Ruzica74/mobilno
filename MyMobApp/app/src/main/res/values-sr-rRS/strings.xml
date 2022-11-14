@@ -7,7 +7,7 @@
     <string name="menu_setings">Podešavanja</string>
     <string name="menu_sights">Znamenitosti</string>
     <string name="language">Izaberite jezik</string>
-    <string name="cache">Obriši keš aplikacije</string>
+    <string name="cache">Da li želiš da keširaš vijesti?</string>
     <string name="pictures">Izaberi broj slika gradova</string>
     <string name="lan">Engleski/Srpski</string>
     <string name="sl1">Jedna slika</string>
