@@ -21,6 +21,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Switch;
@@ -156,6 +158,34 @@ public class SettingsFragment extends Fragment {
                 }catch (Exception e){
                     e.printStackTrace();
                 }
+            }
+        });
+
+        ImageButton check = getView().findViewById(R.id.imageButtonCheck);
+        check.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                check.setImageResource(R.drawable.ic_check_yes);
+                ImageButton x = getView().findViewById(R.id.imageButtonX);
+                x.setImageResource(R.drawable.ic_x_gray);
+                SharedPreferences sh = getActivity().getSharedPreferences("My App", Context.MODE_PRIVATE);
+                SharedPreferences.Editor myEdit = sh.edit();
+                myEdit.putBoolean("cache", true);
+                myEdit.apply();
+            }
+        });
+
+        ImageButton x = getView().findViewById(R.id.imageButtonX);
+        x.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                x.setImageResource(R.drawable.ic_x_orange);
+                ImageButton c = getView().findViewById(R.id.imageButtonCheck);
+                c.setImageResource(R.drawable.ic_check_no);
+                SharedPreferences sh = getActivity().getSharedPreferences("My App", Context.MODE_PRIVATE);
+                SharedPreferences.Editor myEdit = sh.edit();
+                myEdit.putBoolean("cache", false);
+                myEdit.apply();
             }
         });
 

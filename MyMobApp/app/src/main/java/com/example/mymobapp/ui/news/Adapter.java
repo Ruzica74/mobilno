@@ -5,10 +5,13 @@ package com.example.mymobapp.ui.news;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -20,7 +23,11 @@ import com.example.mymobapp.R;
 import com.example.mymobapp.model.Article;
 
 import com.bumptech.glide.request.RequestOptions;
+import com.example.mymobapp.ui.activity.CityActivity;
 import com.example.mymobapp.util.Utils;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -30,6 +37,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
     private List<Article> articles;
     private Context context;
     private OnItemClickListener onItemClickListener;
+    private WebView webView;
 
     public Adapter(List<Article> articles, Context context) {
         this.articles = articles;
@@ -70,8 +78,13 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
             holder.title.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(model.getUrl()));
-                    context.startActivity(browserIntent);
+                    SharedPreferences sh = context.getSharedPreferences("My App", Context.MODE_PRIVATE);
+                    Boolean news_cache = sh.getBoolean("cache", true);
+                    //Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(model.getUrl()));
+                    //context.startActivity(browserIntent);
+                    Intent activityIntent = new Intent(context, Cached_news.class);
+                    activityIntent.putExtra("url", model.getUrl());
+                    context.startActivity(activityIntent);
                 }
             });
         }
@@ -89,6 +102,8 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
             holder.source.setText(model.getSource().getName());
         }
     }
+
+
 
     @Override
     public int getItemCount() {

@@ -7,11 +7,13 @@ import org.ocpsoft.prettytime.PrettyTime;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Random;
 
 public class Utils {
+    static int count;
 
     public static ColorDrawable[] vibrantLightColorList =
             {
@@ -63,5 +65,14 @@ public class Utils {
         Locale locale = Locale.getDefault();
         String country = String.valueOf(locale.getCountry());
         return country.toLowerCase();
+    }
+
+    public static String getUrlName(String url){
+        String novi=url.replace(".", "");
+        novi = novi.replace("/", "");
+        novi = novi.replace("-", "");
+        novi = novi.replace(":", "");
+        System.out.println("novi "+novi);
+        return novi;
     }
 }

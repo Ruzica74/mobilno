@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
@@ -71,7 +72,7 @@ public class NewsFragment extends Fragment {
                 Response response = client.newCall(request).execute();
                 return response.body().string();
             } catch (Exception e) {
-                Toast.makeText(thisContext,"No results", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(thisContext,"No results", Toast.LENGTH_SHORT).show();
                 e.printStackTrace();
             }
             return null;
@@ -80,9 +81,28 @@ public class NewsFragment extends Fragment {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-            Gson gson = new Gson();
-            News news = gson.fromJson(s, News.class);
-            articles = news.getArticles();
+            SharedPreferences sh1 = thisContext.getSharedPreferences("My App", Context.MODE_PRIVATE);
+            Boolean news_cache1 = sh1.getBoolean("cache", true);
+            if(s!=null) {
+                Gson gson = new Gson();
+                News news = gson.fromJson(s, News.class);
+                articles = news.getArticles();
+                if(news_cache1){
+                    SharedPreferences.Editor myEdit = sh1.edit();
+                    myEdit.putString("vijesti", s);
+                    myEdit.apply();
+                }
+            }else{
+                if(news_cache1){
+                    String inace="";
+                    String vijesti = sh1.getString("vijesti", inace);
+                    if(vijesti!=""){
+                        Gson gson = new Gson();
+                        News news = gson.fromJson(vijesti, News.class);
+                        articles = news.getArticles();
+                    }
+                }
+            }
             adapter.setArticles(articles);
             adapter.notifyDataSetChanged();
 
@@ -115,8 +135,12 @@ public class NewsFragment extends Fragment {
         recyclerView.setNestedScrollingEnabled(false);
         adapter = new Adapter(articles, thisContext);
         recyclerView.setAdapter(adapter);
-        OkHttpHandler okHttpHandler = new OkHttpHandler();
-        okHttpHandler.execute(URL+api_key);
+        try {
+            OkHttpHandler okHttpHandler = new OkHttpHandler();
+            okHttpHandler.execute(URL + api_key);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
         // TODO: Use the ViewModel
     }
