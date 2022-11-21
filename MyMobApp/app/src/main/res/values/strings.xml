@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">MyMobApp</string>
+    <string name="app_name" translatable="false">IrelandGuide</string>
     <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
     <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
     <string name="nav_header_title" translatable="false">Android Studio</string>
@@ -37,9 +37,10 @@
     <string name="title_activity_city" translatable="false">SightActivity</string>
     <string name="title_activity_sight2"></string>
     <string name="temp">Temperature:</string>
-    <string name="maxTemp_minTemp">Max and min temperature:</string>
+    <string name="maxTemp_minTemp">Max and min temp:</string>
     <string name="wind">Wind speed:</string>
     <string name="humidity">Humidity:</string>
+    <string name="prognozaFail" translatable="false">xx</string>
 
     <!-- Strings used for fragments for navigation -->
 

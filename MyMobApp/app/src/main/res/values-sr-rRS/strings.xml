@@ -27,7 +27,7 @@
     <string name="gen_img5">Dablin</string>
     <string name="title_activity_sight2"></string>
     <string name="temp">Tempeatura:</string>
-    <string name="maxTemp_minTemp">Maks i min temperatura:</string>
+    <string name="maxTemp_minTemp">Maks i min temp:</string>
     <string name="wind">Brzina vjetra:</string>
     <string name="humidity">Vlažnost:</string>
 </resources>

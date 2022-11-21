@@ -7,12 +7,12 @@
     tools:context=".ui.home.HomeFragment">
 
     <androidx.core.widget.NestedScrollView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="@dimen/scroll_view"
+        android:layout_height="@dimen/scroll_view"
         android:fillViewport="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintHorizontal_bias="@dimen/home_horizontal_bias"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0">
@@ -28,13 +28,13 @@
                 android:id="@+id/text_home"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
+                android:layout_marginStart="@dimen/home_margin"
+                android:layout_marginTop="@dimen/home_margin"
+                android:layout_marginEnd="@dimen/home_margin"
                 android:text="@string/wlc"
                 android:textAlignment="center"
                 android:textColor="@color/dark_primary"
-                android:textSize="34sp" />
+                android:textSize="@dimen/home_title_size" />
 
             <ImageView
                 android:id="@+id/imageView2"

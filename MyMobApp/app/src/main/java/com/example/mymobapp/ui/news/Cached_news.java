@@ -26,6 +26,7 @@ public class Cached_news extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         String url = extras.getString("url");
         webView = (WebView) findViewById(R.id.webview);
+        webView.getSettings().setAllowFileAccess(true);
         SharedPreferences sh1 = getSharedPreferences("My App", Context.MODE_PRIVATE);
         Boolean news_cache1 = sh1.getBoolean("cache", true);
         webView.setWebViewClient(new WebViewClient() {
@@ -34,7 +35,7 @@ public class Cached_news extends AppCompatActivity {
                 super.onPageFinished(webView, url);
                 SharedPreferences sh = getSharedPreferences("My App", Context.MODE_PRIVATE);
                 Boolean news_cache = sh.getBoolean("cache", true);
-                if(news_cache) {
+                if(news_cache & isNetworkConnected()) {
                     File file = new File(getFilesDir(), Utils.getUrlName(url));
                     webView.saveWebArchive(file.getAbsolutePath() + ".mht");
                     System.out.println("Kesiranjeeeeeeeeeeeeeee"+Utils.getUrlName(url));

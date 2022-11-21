@@ -2,6 +2,31 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="fragment_margin">16dp</dimen>
+    <dimen name="scroll_view">0dp</dimen>
+    <dimen name="home_margin">8dp</dimen>
+    <dimen name="home_horizontal_bias">0.666</dimen>
+    <dimen name="horizontal_bias">0.38</dimen>
+    <dimen name="settings_lang_horizontal_bias">0.113</dimen>
+    <dimen name="settings_lang_vertical_bias">0.136</dimen>
+    <dimen name="settings_switch_horizontal_bias">0.486</dimen>
+    <dimen name="settings_switch_vertical_bias">0.12</dimen>
+    <dimen name="settings_cache_horizontal_bias">0.132</dimen>
+    <dimen name="settings_cache_vertical_bias">0.25</dimen>
+    <dimen name="settings_button">48dp</dimen>
+    <dimen name="settings_button_margin">113dp</dimen>
+    <dimen name="settings_check_horizontal_bias">0.27</dimen>
+    <dimen name="settings_button_vertical_bias">0.03</dimen>
+    <dimen name="settings_x_horizontal_bias">0.584</dimen>
+    <dimen name="settings_picture_horizontal_bias">0.16</dimen>
+    <dimen name="settings_picture_vertical_bias">0.35</dimen>
+    <dimen name="settings_radiogroup_horizontal_bias">0.6</dimen>
+    <dimen name="settings_radiogroup_vertical_bias">0.526</dimen>
+    <dimen name="settings_radiogroup_width">132dp</dimen>
+    <dimen name="settings_radiogroup_height">151dp</dimen>
+    <dimen name="switch_min_height">48dp</dimen>
+    <dimen name="home_title_size">34sp</dimen>
+    <dimen name="fragment_container_height">400dp</dimen>
     <dimen name="nav_header_vertical_spacing">8dp</dimen>
     <dimen name="nav_header_height">176dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
@@ -34,4 +59,5 @@
     <dimen name="padding_8">8dp</dimen>
     <dimen name="temp_margin">100dp</dimen>
     <dimen name="tempmm_margin">170dp</dimen>
+    <dimen name="city_title_size">16sp</dimen>
 </resources>

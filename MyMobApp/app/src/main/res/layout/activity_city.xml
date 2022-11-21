@@ -25,7 +25,7 @@
                 android:id="@+id/actionbartitle"
                 android:background="@color/primary"
                 android:maxLines="1"
-                android:textSize="16sp"
+                android:textSize="@dimen/city_title_size"
                 android:textStyle="bold"
                 android:paddingStart="@dimen/activity_horizontal_margin"
                 android:paddingEnd="@dimen/activity_horizontal_margin"
@@ -140,7 +140,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/published_margin_left"
                         android:layout_marginRight="@dimen/published_margin_right"
-                        android:text="Dablin"
+                        android:text="@string/menu_city"
                         android:textColor="@color/colorTextView" />
                 </FrameLayout>
 
@@ -173,7 +173,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/temp_margin"
                         android:layout_marginRight="@dimen/published_margin_right"
-                        android:text="33 c"
+                        android:text="@string/prognozaFail"
                         android:textColor="@color/colorTextView" />
                 </FrameLayout>
             <FrameLayout
@@ -198,7 +198,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/tempmm_margin"
                     android:layout_marginRight="@dimen/published_margin_right"
-                    android:text="33 c"
+                    android:text="@string/prognozaFail"
                     android:textColor="@color/colorTextView" />
                 </FrameLayout>
 
@@ -224,7 +224,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/temp_margin"
                     android:layout_marginRight="@dimen/published_margin_right"
-                    android:text="33 c"
+                    android:text="@string/prognozaFail"
                     android:textColor="@color/colorTextView" />
             </FrameLayout>
             <FrameLayout
@@ -249,7 +249,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/temp_margin"
                     android:layout_marginRight="@dimen/published_margin_right"
-                    android:text="33 c"
+                    android:text="@string/prognozaFail"
                     android:textColor="@color/colorTextView" />
             </FrameLayout>
 

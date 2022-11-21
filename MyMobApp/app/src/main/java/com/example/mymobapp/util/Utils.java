@@ -72,7 +72,9 @@ public class Utils {
         novi = novi.replace("/", "");
         novi = novi.replace("-", "");
         novi = novi.replace(":", "");
-        System.out.println("novi "+novi);
-        return novi;
+        final int mid = novi.length() / 2; //get the middle of the String
+        String[] parts = {novi.substring(0, mid),novi.substring(mid)};
+        System.out.println("novi "+parts[1]);
+        return parts[1];
     }
 }
