@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.activity.SightActivity2">
+    tools:context="org.etfbl.mymobapp.ui.activity.SightActivity2">
 
 
     <androidx.core.widget.NestedScrollView
